@@ -6,6 +6,7 @@ package com.cecil.dcm; /**
  * @Description:
  */
 
+import org.dcm4che.data.DcmObjectFactory;
 import org.dcm4che3.data.Attributes;
 import org.dcm4che3.data.Tag;
 import org.dcm4che3.io.DicomInputStream;
@@ -19,6 +20,7 @@ import java.io.File;
  */
 public class DcmTest {
 
+    private static final DcmObjectFactory dof = DcmObjectFactory.getInstance();
     @Test
     public void readFile() throws Exception {
         File dcm = new File("D:\\DownloadFiles\\0803\\f03e24a1.dcm");
@@ -35,6 +37,15 @@ public class DcmTest {
         //accession number
         String accessionNO = attributes.getString(Tag.AccessionNumber);
         System.out.println("accessionNO" + accessionNO);
+    }
+
+    @Test
+    public void fileSize() {
+        File dcm = new File("D:\\DownloadFiles\\0803\\f03e24a1 .dcm");
+        File dcm2 = new File("D:\\DownloadFiles\\0803\\f03e24a1 - ¸±±¾.dcm");
+        System.out.println(dcm.length());
+        System.out.println(dcm2.length());
+        System.out.println(dcm.length() != dcm2.length());
     }
 
 }
