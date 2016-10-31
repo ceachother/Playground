@@ -8,6 +8,7 @@
 package com.cecil.joda;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.ISODateTimeFormat;
 
 import java.util.Date;
 
@@ -18,8 +19,8 @@ import java.util.Date;
 public class JodaTest {
 
     public static void main(String[] args) {
-        stringToJoda();
-//        jodaToString();
+//        stringToJoda();
+        jodaToString();
     }
 
     public static void jodaToString() {
@@ -27,6 +28,11 @@ public class JodaTest {
         System.out.println(dateTime);
         System.out.println(dateTime.toString("yyyyMMdd"));
         System.out.println(new DateTime(new Date().getTime()).toString("yyyyMMdd"));
+        System.out.println(new DateTime().toString(ISODateTimeFormat.date()));
+        System.out.println(new DateTime().toString(ISODateTimeFormat.ordinalDate()));
+        DateTime date = new DateTime();
+        date = date.minusMonths(1);
+        System.out.println(date.toString(ISODateTimeFormat.yearMonth()));
     }
     public static void stringToJoda() {
 //        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyyMMdd");

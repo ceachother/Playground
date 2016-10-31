@@ -11,11 +11,15 @@ package com.cecil.springboot;
  * @author LiMingChi 2016-05-18 11:58
  * @version V1.0
  */
+//@XmlRootElement
 public class Greeting {
 
-    private final long id;
+    private long id;
 
-    private final String content;
+    private String content;
+
+    public Greeting() {
+    }
 
     public Greeting(long id, String content) {
         this.id = id;

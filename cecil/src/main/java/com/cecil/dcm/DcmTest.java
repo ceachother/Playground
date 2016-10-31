@@ -8,11 +8,14 @@ package com.cecil.dcm; /**
 
 import org.dcm4che.data.DcmObjectFactory;
 import org.dcm4che3.data.Attributes;
+import org.dcm4che3.data.DatasetWithFMI;
 import org.dcm4che3.data.Tag;
 import org.dcm4che3.io.DicomInputStream;
+import org.dcm4che3.io.DicomOutputStream;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author LiMingChi 2016-07-28 10:26
@@ -39,6 +42,18 @@ public class DcmTest {
         System.out.println("accessionNO" + accessionNO);
     }
 
+    @Test
+    public void writeFile() {
+        File dcm = new File("D:\\Images\\xuaiyu\\0007ca1b.dcm");
+        File dcm2 = new File("D:\\test\\f03e24a1.dcm");
+        try (DicomInputStream dis = new DicomInputStream(dcm);
+             DicomOutputStream dos = new DicomOutputStream(dcm2)) {
+            DatasetWithFMI datasetWithFMI = dis.readDatasetWithFMI();
+            dos.writeDatasetWithFMI(datasetWithFMI);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Test
     public void fileSize() {
         File dcm = new File("D:\\DownloadFiles\\0803\\f03e24a1 .dcm");

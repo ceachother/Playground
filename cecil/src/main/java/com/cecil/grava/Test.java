@@ -9,9 +9,8 @@ package com.cecil.grava; /**
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
+import com.google.common.io.Files;
 import junit.framework.TestCase;
-import org.dcm4che3.data.Attributes;
-import org.dcm4che3.io.DicomInputStream;
 
 import java.io.File;
 import java.io.IOException;
@@ -103,14 +102,14 @@ public class Test extends TestCase {
         return Optional.fromNullable(15L);
     }
 
-
-    public void testDcm() throws IOException {
-        Attributes attributes = new Attributes();
-        File dcm = new File("C:\\Users\\Cecil\\Desktop\\DailyTask\\0524\\1.2.826.0.1.3680043.285671610323066885271534130219783661021.dcm.new");
-        DicomInputStream dicomInputStream = new DicomInputStream(dcm);
-        attributes = dicomInputStream.readDataset(-1, -1);
-        System.out.println(attributes);
+    public void testIO() {
+        File file1 = new File("D:\\test\\test.dcm");
+        File file2 = new File("D:\\images\\xuaiyu\\0007ca1b.dcm");
+        try {
+            System.out.println(Files.equal(file1, file2));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 
 }

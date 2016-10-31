@@ -8,10 +8,8 @@
 package com.cecil.springboot;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -31,5 +29,23 @@ public class GreetingController {
     public Greeting greeting(@PathVariable String name)
     {
         return new Greeting(counter.incrementAndGet(), String.format(template,name));
+    }
+
+    @RequestMapping(value = "json" , method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Greeting json(@RequestBody Greeting greeting)
+    {
+        System.out.println(greeting);
+        return new Greeting(1,"test");
+    }
+
+
+    @RequestMapping(value = "xml/greet",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_XML_VALUE)
+//    @ResponseBody
+    public Greeting greetXml() {
+        Greeting greeting = new Greeting(123, "test123");
+        return greeting;
     }
 }
