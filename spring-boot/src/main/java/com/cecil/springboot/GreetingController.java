@@ -46,6 +46,21 @@ public class GreetingController {
 //    @ResponseBody
     public Greeting greetXml() {
         Greeting greeting = new Greeting(123, "test123");
-        return greeting;
+//        return greeting;
+        return null;
+    }
+
+    @RequestMapping(value = "post/postxml", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_XML_VALUE)
+    public PushRequest postXml(@RequestBody PushRequest request) {
+        System.out.println(request.getInstanceuid());
+        return request;
+    }
+
+    @RequestMapping(value = "post/greetxml", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_XML_VALUE)
+    public Greeting postXml(@RequestBody Greeting request) {
+        System.out.println(request);
+        return request;
     }
 }

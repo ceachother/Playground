@@ -7,16 +7,23 @@
  */
 package com.cecil.springboot;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
+
 /**
  * @author LiMingChi 2016-05-18 11:58
  * @version V1.0
  */
-//@XmlRootElement
+@XmlRootElement(name = "Greeting")
 public class Greeting {
 
     private long id;
 
+    @XmlElement(name = "content")
     private String content;
+
+    private List<String> instance;
 
     public Greeting() {
     }
@@ -32,5 +39,13 @@ public class Greeting {
 
     public String getContent() {
         return content;
+    }
+
+    public List<String> getInstance() {
+        return instance;
+    }
+
+    public void setInstance(List<String> instance) {
+        this.instance = instance;
     }
 }
