@@ -29,6 +29,7 @@
         <module>jax-rs-app</module>
         <module>cecil</module>
         <module>jax2</module>
+        <module>activemq</module>
     </modules>
 
     <dependencies>

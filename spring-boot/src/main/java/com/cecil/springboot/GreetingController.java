@@ -63,4 +63,10 @@ public class GreetingController {
         System.out.println(request);
         return request;
     }
+
+    @RequestMapping(value = "post/{id1}/{id2:.+}", method = RequestMethod.GET)
+    public void twoVariable(@PathVariable String id1,@PathVariable String id2) {
+        System.out.println(id1);
+        System.out.println(id2);
+    }
 }
