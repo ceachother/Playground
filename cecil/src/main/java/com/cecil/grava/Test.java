@@ -1,4 +1,4 @@
-package com.cecil.guava; /**
+package com.cecil.grava; /**
  * @ProjectName:
  * @Copyright: 2014 ShangHai DJ HealthUnion Systems Co., Ltd. All Right Reserved.
  * @address: http://www.djhealthunion.com/
@@ -9,14 +9,11 @@ package com.cecil.guava; /**
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
-import com.google.common.io.ByteStreams;
 import com.google.common.io.Files;
 import junit.framework.TestCase;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Set;
 
 /**
@@ -110,19 +107,6 @@ public class Test extends TestCase {
         File file2 = new File("D:\\images\\xuaiyu\\0007ca1b.dcm");
         try {
             System.out.println(Files.equal(file1, file2));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void testStream() {
-        String s = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<pushtocenter>" +
-                "<instanceuid>1.2.3</instanceuid>\r\n<instanceuid>1.2.4</instanceuid><instanceuid>1.2.5</instanceuid></pushtocenter>";
-        s = s.replaceAll("\r\n|\r|\n", "");
-        InputStream inputStream = new ByteArrayInputStream(s.getBytes());
-        try {
-            String result = new String(ByteStreams.toByteArray(inputStream));
-            System.out.println(result);
         } catch (IOException e) {
             e.printStackTrace();
         }

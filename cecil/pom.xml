@@ -23,11 +23,6 @@
             <artifactId>apacs-core</artifactId>
             <version>3.37</version>
         </dependency>
-        <dependency>
-            <groupId>apacs</groupId>
-            <artifactId>apacs-tool</artifactId>
-            <version>3.37</version>
-        </dependency>
 
         <dependency>
             <groupId>joda-time</groupId>
