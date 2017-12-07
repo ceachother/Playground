@@ -30,7 +30,6 @@ public class JodaTest {
         System.out.println(new DateTime(new Date().getTime()).toString("yyyyMMdd"));
         System.out.println(new DateTime().toString(ISODateTimeFormat.date()));
         System.out.println(new DateTime().toString(ISODateTimeFormat.ordinalDate()));
-        System.out.println(new Date().getTime());
         DateTime date = new DateTime();
         date = date.minusMonths(1);
         System.out.println(date.toString(ISODateTimeFormat.yearMonth()));

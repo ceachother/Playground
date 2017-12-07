@@ -26,21 +26,20 @@ public class DcmTest {
     private static final DcmObjectFactory dof = DcmObjectFactory.getInstance();
     @Test
     public void readFile() throws Exception {
-        File dcm = new File("D:\\DownloadFiles\\1117\\1117\\00001d8a.dcm");
+        File dcm = new File("D:\\DownloadFiles\\0803\\f03e24a1.dcm");
         Attributes attributes = new Attributes();
         try (DicomInputStream dis = new DicomInputStream(dcm)) {
-//            attributes = dis.readDataset(-1, Tag.PixelData);
-            attributes = dis.readItem();
+            attributes = dis.readDataset(-1, Tag.PixelData);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
         //study uid
         String studyUID = attributes.getString(Tag.StudyInstanceUID);
-        System.out.println("studyUID:" + studyUID);
+        System.out.println("studyUID" + studyUID);
         //accession number
         String accessionNO = attributes.getString(Tag.AccessionNumber);
-        System.out.println("accessionNO:" + accessionNO);
+        System.out.println("accessionNO" + accessionNO);
     }
 
     @Test
@@ -62,10 +61,6 @@ public class DcmTest {
         System.out.println(dcm.length());
         System.out.println(dcm2.length());
         System.out.println(dcm.length() != dcm2.length());
-    }
-
-    public void dcm2jpg() {
-        dcm2jpg();
     }
 
 }

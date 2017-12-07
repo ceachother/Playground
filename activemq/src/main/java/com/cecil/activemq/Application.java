@@ -10,16 +10,15 @@ package com.cecil.activemq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jms.annotation.EnableJms;
-import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
-import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
-import javax.jms.*;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.ObjectMessage;
+import javax.jms.Session;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,18 +30,6 @@ import java.util.List;
 @SpringBootApplication
 @EnableJms
 public class Application {
-
-    @Bean
-    public JmsListenerContainerFactory<?> myListenerContainerFactory(ConnectionFactory connectionFactory,
-                                                                     DefaultJmsListenerContainerFactoryConfigurer configurer) {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        // This provides all boot's default to this factory, including the message converter
-        configurer.configure(factory, connectionFactory);
-        factory.setSessionTransacted(true);
-        factory.setConcurrency("5");
-        // You could still override some of Boot's default if necessary.
-        return factory;
-    }
 
     public static void main(String[] args){
         // Launch the application
@@ -63,6 +50,7 @@ public class Application {
                 return objectMessage;
             }
         });
+        System.out.println("FINISH");
     }
 
 }

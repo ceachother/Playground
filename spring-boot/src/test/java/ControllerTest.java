@@ -38,7 +38,7 @@ public class ControllerTest {
 
     @Test
     public void testController() throws Exception {
-        this.mockMvc.perform(get("/greeting/post/1.2.3/4.5.6"))
+        this.mockMvc.perform(get("/greeting/xml/greet"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }

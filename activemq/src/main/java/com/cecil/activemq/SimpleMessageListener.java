@@ -8,13 +8,13 @@
 package com.cecil.activemq;
 
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,20 +24,19 @@ import java.util.List;
 @Component
 public class SimpleMessageListener{
 
-    @JmsListener(destination = "mailbox",containerFactory = "myListenerContainerFactory")
-//    @SendTo("mailbox2")
-    public void receiveMailbox(Message message) throws Exception{
+
+    @JmsListener(destination = "mailbox")
+    @SendTo("mailbox2")
+    public String receiveMailbox(Message message) {
         ObjectMessage msg = (ObjectMessage) message;
         try {
             List<Person> persons = (List<Person>) msg.getObject();
-            Person person = (Person) persons.get(0);
+            Person person = (Person) persons.get(1);
             System.out.println(person.getName());
         } catch (JMSException e) {
             e.printStackTrace();
-            throw new IOException(e);
         }
-
-//        return "GOTCHA";
+        return "GOTCHA";
     }
 
     @JmsListener(destination = "mailbox2")
