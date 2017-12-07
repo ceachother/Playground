@@ -31,3 +31,16 @@ jax2/target/
 out/
 spring-boot/target/
 target/
+
+spring-aop/.classpath
+spring-aop/.gradle/
+spring-aop/.project
+spring-aop/.settings/
+spring-aop/build/dependency-cache/
+spring-aop/build/libs/spring-aop-0.1.0.jar.original
+spring-aop/build/reports/
+spring-aop/build/test-results/
+spring-aop/build/tmp/
+spring-aop/gradle/wrapper/gradle-wrapper.properties
+spring-aop/gradlew
+spring-aop/gradlew.bat
